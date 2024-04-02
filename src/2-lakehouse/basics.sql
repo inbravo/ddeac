@@ -8,3 +8,7 @@ SELECT 1,2;
 -- COMMAND ----------
 
 -- MAGIC %fs ls
+
+-- COMMAND ----------
+
+-- MAGIC %fs ls dbfs:/Users
