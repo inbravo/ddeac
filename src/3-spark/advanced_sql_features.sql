@@ -1,14 +1,26 @@
 -- Databricks notebook source
-CREATE TABLE IF NOT EXISTS books AS SELECT * EXCEPT (_rescued_data) FROM read_files('/repo/data/books.csv');
+-- CREATE TABLE IF NOT EXISTS books AS SELECT * EXCEPT (_rescued_data) FROM read_files('dbfs:/user/hive/warehouse/dbacademy.db/books');
+DESC dbacademy.books;
 
 -- COMMAND ----------
 
-SELECT country, price FROM books;
+Select
+  *
+from
+  dbacademy.books;
+
+-- COMMAND ----------
+
+SELECT
+  country,
+  price
+FROM
+  dbacademy.books;
 
 -- COMMAND ----------
 
 SELECT * FROM (
-  SELECT country, price FROM books
+  SELECT country, price FROM dbacademy.books
 ) PIVOT (
   sum(price) for country in ('France','Germany')
 );
@@ -34,11 +46,11 @@ SELECT *, CASE
    WHEN price > 15 THEN 'expensive' 
    ELSE 'cheap' 
    END
-FROM books;
+FROM dbacademy.books;
 
 -- COMMAND ----------
 
-SELECT * FROM books ORDER BY (CASE 
+SELECT * FROM dbacademy.books ORDER BY (CASE 
    WHEN pages < 500 
    THEN pages 
    ELSE price 
