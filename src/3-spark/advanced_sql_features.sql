@@ -1,6 +1,16 @@
 -- Databricks notebook source
+-- SET delta.enabled = true;
+-- SET spark.databricks.catalog.enabled = true;
+SELECT CURRENT_METASTORE()
+
+-- COMMAND ----------
+
 -- CREATE TABLE IF NOT EXISTS books AS SELECT * EXCEPT (_rescued_data) FROM read_files('dbfs:/user/hive/warehouse/dbacademy.db/books');
 DESC dbacademy.books;
+
+-- COMMAND ----------
+
+DESCRIBE DATABASE default
 
 -- COMMAND ----------
 
